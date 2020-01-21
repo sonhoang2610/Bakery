@@ -30,7 +30,12 @@ public class ItemSchedule : BaseItem<ProductStatusInfo>
 
     public override void SetData(ProductStatusInfo pInfo)
     {
+        if (_info == pInfo)
+        {
+            return;
+        }
         base.SetData(pInfo);
+    
         string pic = ProductConfig.nameProduct[pInfo.productID].pic;
         if (!string.IsNullOrEmpty(pic))
         {
@@ -46,6 +51,13 @@ public class ItemSchedule : BaseItem<ProductStatusInfo>
             }
         }
         labelQuantity.text =  pInfo.quantitySchedule.ToString();
+        labelQuantity.onEndEdit.AddListener((string pEdit) => {
+            int pNumber = 0;
+            if(int.TryParse(pEdit,out pNumber))
+            {
+                _info.quantitySchedule = pNumber;
+            }
+        });
     }
 
     static Dictionary<string, Texture2D> cachePic = new Dictionary<string, Texture2D>();
