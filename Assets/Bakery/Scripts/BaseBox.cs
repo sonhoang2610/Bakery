@@ -86,15 +86,15 @@ public class BaseBox< T0, T1> : ListViewCustom<T0,T1> where T0 : BaseItem<T1> wh
     protected override void OnEnable()
     {
         base.OnEnable();
-        EzClientSocket.onMessage += onExecuteMsg;
+        EzClient.OnMessage += onExecuteMsg;
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
-        EzClientSocket.onMessage -= onExecuteMsg;
+        EzClient.OnMessage-= onExecuteMsg;
     }
-    private void onExecuteMsg(EzClientSocket ws, EzMessage msg)
+    private void onExecuteMsg(IClient ws, EzMessage msg)
     {
         Dispatcher.InvokeAsync(delegate ()
         {

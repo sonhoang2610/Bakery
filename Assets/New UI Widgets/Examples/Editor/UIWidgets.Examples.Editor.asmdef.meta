@@ -2,5 +2,8 @@ fileFormatVersion: 2
 guid: 6db589689499ad14c8b33ef4478bb29d
 labels:
 - UiwidgetsTMProRequiredAssemblyDefinition
-DefaultImporter:
+AssemblyDefinitionImporter:
+  externalObjects: {}
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 

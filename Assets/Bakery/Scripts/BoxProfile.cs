@@ -43,7 +43,7 @@ public class BoxProfile : MonoBehaviour, IViewData<CustomerInfo>
         faceBookLink.text = item.facebookID;
         onSelectProfile(0);
     }
-    private void onExecuteMsg(EzClientSocket ws, EzMessage msg)
+    private void onExecuteMsg(IClient ws, EzMessage msg)
     {
         Dispatcher.Invoke(delegate
         {
@@ -108,12 +108,12 @@ public class BoxProfile : MonoBehaviour, IViewData<CustomerInfo>
     }
     private void OnEnable()
     {
-        EzClientSocket.onMessage += onExecuteMsg;
+        EzClient.OnMessage += onExecuteMsg;
     }
 
     private void OnDisable()
     {
-        EzClientSocket.onMessage -= onExecuteMsg;
+        EzClient.OnMessage -= onExecuteMsg;
     }
     public void onSelectProfile(int pIndex)
     {

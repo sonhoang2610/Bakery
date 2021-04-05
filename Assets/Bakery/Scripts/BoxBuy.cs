@@ -136,14 +136,14 @@ public class BoxBuy : Singleton<BoxBuy> {
 
     private void OnEnable()
     {
-        EzClientSocket.onMessage += onExecuteMsg;
+        EzClient.OnMessage+= onExecuteMsg;
         ResetBox();
         fixItem = false;
     }
 
     private void OnDisable()
     {
-        EzClientSocket.onMessage -= onExecuteMsg;
+        EzClient.OnMessage-= onExecuteMsg;
     }
 
     public void ResetBox()
@@ -167,7 +167,7 @@ public class BoxBuy : Singleton<BoxBuy> {
         boxBuy.DataSource = list.ToObservableList() ;
     }
 
-    private void onExecuteMsg(EzClientSocket ws, EzMessage msg)
+    private void onExecuteMsg(IClient ws, EzMessage msg)
     {
         Dispatcher.InvokeAsync(delegate {
             if(msg.Header == (ushort)ComonMsg.InsertTicketACK)
